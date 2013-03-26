@@ -75,4 +75,4 @@ This file is meant to be the "traffic cop" of the system.  It is the only file t
 
 Credits
 =====
-This project has always been built by only one programmer, Alex Gurrola.  One day he hopes this system will no longer require his influence to progress without feature creep.
+This project has always been built by only one programmer, Alex Gurrola (@alexgurrola).  One day he hopes this system will no longer require his influence to progress without feature creep.
