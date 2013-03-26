@@ -31,32 +31,95 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
+        <h1>Overview</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<h5>General</h5>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<p>This is the complete core of Vexis.  This can be utilized to set up nodes, websites, and anything else one's heart can desire.</p>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<h5>Main Goals</h5>
 
-<h3>Designer Templates</h3>
+<ul>
+<li><p>Maintain a solid system of which website development and graphic design can take place.  The issue in this scenario is that the system is meant to be universal, so the intial installation must be very basic but still have all necessary components for expansion within the main administration panel.  This will be an interesting hurdle to jump over, but it will be important in maintain a solid, universal product for many generations to come.</p></li>
+<li><p>Maintain several different "gateways" that will provide different types of functionality for various domains, subdomains, and virtual subdirectories.</p></li>
+</ul><h1>Installation</h1>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<h5>Overview</h5>
 
-<h3>Rather Drive Stick?</h3>
+<p>This is a simple process and will remain as such if instructions are followed carefully.</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<h5>Configuration</h5>
 
-<h3>Authors and Contributors</h3>
+<p>Copy the config.sample.php file and name the copy to config.php for the system to recognize it.  Then, open this file (which is fairly straight forward) and replace the sample data with the data from your server.</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<h5>Database</h5>
 
-<h3>Support or Contact</h3>
+<p>Simply import the SQL file from the install folder directly in phpMyAdmin.  This will set up your initial database.  You should then visit the Settings table and change the various settings specifically for your domain and server information to avoid future issues when logging in for the first time.</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>Note: This will eventually all be done with an installation file in php, which will make this process much easier.</p>
+
+<h5>Finalizing</h5>
+
+<p>Since everything should be smoothly configured, delete the install folder.  This will keep your system from having your settings overwritten which is a large security vulnerability.</p>
+
+<h1>System Roles</h1>
+
+<h5>Overview</h5>
+
+<p>The roles that follow are separated within a directory specific to its name.  Within these directories, each role will have its format and place in the order of the system as it runs.  The role will dictate where a particular feature will need to go and from there we can maintain quite a vast sense of universal ability.</p>
+
+<h5>Extensions</h5>
+
+<p>Extensions will involve a top level action enabled across the board for all pages.</p>
+
+<div class="highlight"><pre><span class="c1">//Sample Format</span>
+
+<span class="c1">//object oriented class style information here</span>
+<span class="k">echo</span> <span class="s2">"Hello World!"</span><span class="p">;</span>
+</pre></div>
+
+<h5>Gateways</h5>
+
+<p>Only one gateway can run and is set by the children block in the database.</p>
+
+<ul>
+<li>ACP - Admin Control Panel*</li>
+<li>API - Application Programming Interface</li>
+<li>CMS - Content Management System</li>
+<li>CDN - Content Delivery Network</li>
+</ul><p>*This needs to be able to be accessed regardless of the ability of the website to run, after changes have been made.  This should also include some sort of hardcoded recovery admin to help through that process in the case that major issues arise.</p>
+
+<h5>Includes</h5>
+
+<p>These are files that contain the initial hooks, like configuration and globals.</p>
+
+<h5>Libraries</h5>
+
+<p>These are files that are available throughout the system at any time.  They work in an object oriented method and contribute in common and general ways (i.e. database interfacing, markup languages, etc).  These files are extremely flexible and should be edited on a common basis.</p>
+
+<p>Note: The loading of these files is going to be more nested in the coming versions.  We will be loading data in namespaces, and this will go into various types of a hierarchy, similar to that of the widely known SplClassLoader.php file.</p>
+
+<h5>Modules</h5>
+
+<p>These are files that are only executed by a particular gateway and are held in a folder specific to that gateway.  These files are specific to a particular page that calls them, can only run once, can only have one injection and do not run across the entire system.  These are meant for extremely specific tweaks.</p>
+
+<h5>Plugins</h5>
+
+<p>Plugins will involve a bottom level action enabled particularly within pages that call for them, which can involve multiple injections.</p>
+
+<div class="highlight"><pre><span class="c1">//Sample Format</span>
+
+<span class="c1">//object oriented class style information here</span>
+<span class="k">echo</span> <span class="s2">"Hello World!"</span><span class="p">;</span>
+</pre></div>
+
+<h5>Index.php</h5>
+
+<p>This file is meant to be the "traffic cop" of the system.  It is the only file that is ever truly executed and it builds all data in a particular order.  It is very flexible and should be edited on a rare basis.</p>
+
+<h1>Credits</h1>
+
+<p>This project has always been built by only one programmer, Alex Gurrola.  One day he hopes this system will no longer require his influence to progress without feature creep.</p>
       </section>
     </div>
 
